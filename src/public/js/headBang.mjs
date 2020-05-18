@@ -222,45 +222,31 @@ export default function mindRunner() {
         let components = [];
         var headComponents;
 
-        $.getJSON("src/public/js/faceVerts.json", function (json) {
-
-            // head = Bodies.fromVertices(x, y, Vertices.scale(json, -.1, -.1), {
-            //     render: {
-            //         fillStyle: '#FF6B6B',
-            //         sprite: {
-            //             texture: 'src/public/assets/images/lightbulb.png'
-            //         }
-            //     },
-            //     isStatic: false,
-            //     mass: 15
-            // }, true);
-
-            head = Bodies.rectangle(x, y, 200, 200, {
-                render: {
-                    sprite: {
-                        texture: 'src/public/assets/images/profile_silhouette.png',
-                        xScale: 2,
-                        yScale: 2
-                    }
-                },
-                mass: 10
-            })
-
-            components.push(head);
-
-            headComponents = Composite.create({ bodies: components });
-
-            Composite.add(headComponents, Constraint.create({
-                bodyA: headComponents.bodies[0],
-                bodyB: neck.bodies[neck.bodies.length - 1],
-                pointA: { x: 30, y: 100 },
-                pointB: { x: 0, y: - 10 },
-                render: {
-                    visible: false
+        head = Bodies.rectangle(x, y, 200, 200, {
+            render: {
+                sprite: {
+                    texture: 'src/public/assets/images/profile_silhouette.png',
+                    xScale: 2,
+                    yScale: 2
                 }
-            }))
-            World.add(world, headComponents);
-        });
+            },
+            mass: 10
+        })
+
+        components.push(head);
+
+        headComponents = Composite.create({ bodies: components });
+
+        Composite.add(headComponents, Constraint.create({
+            bodyA: headComponents.bodies[0],
+            bodyB: neck.bodies[neck.bodies.length - 1],
+            pointA: { x: 30, y: 100 },
+            pointB: { x: 0, y: - 10 },
+            render: {
+                visible: false
+            }
+        }))
+        World.add(world, headComponents);
     }
 
     function addFloor() {
