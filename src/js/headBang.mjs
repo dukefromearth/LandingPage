@@ -98,7 +98,7 @@ export default function mindRunner() {
                     render: {
                         fillStyle: color,
                         sprite: {
-                            texture: 'src/public/assets/images/bookedge/bookedge-2.png',
+                            texture: 'src/assets/images/bookedge/bookedge-2.png',
                             xScale: 0.3,
                             yScale: 0.3,
                             xOffset: (i % 2 == 0) ? Math.random() * 0.2 : Math.random() * -0.2
@@ -145,7 +145,7 @@ export default function mindRunner() {
                 }
             })); // 
             if (i < 12) {
-                boxes[i].render.sprite.texture = 'src/public/assets/images/letters/letter-' + i + '.png';
+                boxes[i].render.sprite.texture = 'src/assets/images/letters/letter-' + i + '.png';
                 boxes[i].render.sprite.xOffset = 1;
             }
             ang += 2 * Math.PI / quantity;
@@ -218,14 +218,13 @@ export default function mindRunner() {
     }
 
     function addHead(x, y, neck) {
-        // var group = Body.nextGroup(true);
         let components = [];
         var headComponents;
 
         head = Bodies.rectangle(x, y, 200, 200, {
             render: {
                 sprite: {
-                    texture: 'src/public/assets/images/profile_silhouette.png',
+                    texture: 'src/assets/images/profile_silhouette.png',
                     xScale: 2,
                     yScale: 2
                 }
@@ -263,7 +262,7 @@ export default function mindRunner() {
         let fist = Bodies.rectangle(x, y, 50, 50, {
             render: {
                 sprite: {
-                    texture: 'src/public/assets/images/hand.png',
+                    texture: 'src/assets/images/hand.png',
                     xScale: 1,
                     yScale: 1
                 },
@@ -278,7 +277,7 @@ export default function mindRunner() {
         let computer = Bodies.rectangle(x, y, 50, 300, {
             render: {
                 sprite: {
-                    texture: 'src/public/assets/images/computer.png',
+                    texture: 'src/assets/images/computer.png',
                     xScale: 1,
                     yScale: 1
                 }
@@ -347,11 +346,6 @@ export default function mindRunner() {
         World.add(world, [lHand, rHand]);
         World.add(world, neck);
 
-        // mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
-        // mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
-
-
-
         Events.on(engine, 'beforeUpdate', function (event) {
             let lH = lHand.bodies[0];
             lH.force.y = - Math.sin(counter / 3) / 20;
@@ -362,11 +356,12 @@ export default function mindRunner() {
 
             pulley1.angle += 0.0005;
             pulley2.angle += 0.0005;
+
             // if (counter % 200 === 0) {
             //     let taco = Bodies.circle(deviceInfo.screenWidth() / 2 - 300, deviceInfo.screenHeight() - 200, 25, {
             //         render: {
             //             sprite: {
-            //                 texture: 'src/public/assets/images/food/food-' + Math.floor(Math.random() * 3) + '.png',
+            //                 texture: 'src/assets/images/food/food-' + Math.floor(Math.random() * 3) + '.png',
             //                 xScale: 0.5,
             //                 yScale: 0.5
             //             }
@@ -385,7 +380,7 @@ export default function mindRunner() {
                 let lightbulb = Bodies.circle(deviceInfo.screenWidth() / 2 + 200, deviceInfo.screenHeight() - 400, 25, {
                     render: {
                         sprite: {
-                            texture: 'src/public/assets/images/lightbulb.png',
+                            texture: 'src/assets/images/lightbulb.png',
                             xScale: 1,
                             yScale: 1
                         }
@@ -401,6 +396,7 @@ export default function mindRunner() {
 
             counter++;
         });
+
     }
 
     setup();
